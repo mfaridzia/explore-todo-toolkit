@@ -27,7 +27,8 @@ export default function EditTodo() {
           id: todoId,
           title,
           description,
-          status: Number(status)
+          status: Number(status),
+          createdAt: new Date().toISOString()
         })
       );
 

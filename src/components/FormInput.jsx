@@ -10,7 +10,9 @@ export default function FormInput({
 }) {
   return (
     <>
-      <label htmlFor={labelId}> {text} </label>
+      <label htmlFor={labelId}>
+        {text}
+      </label>
       <input
         className="form-control mb-3"
         type={type}

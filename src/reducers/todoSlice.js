@@ -21,6 +21,13 @@ const todoSlice = createSlice({
         existingTodo.createdAt = createdAt
       }
     },
+    toggleStatus(state, action) {
+      const { id } = action.payload;
+      const existingTodo = state.find((todo) => todo.id === id);
+      if (existingTodo) {
+        existingTodo.status = existingTodo.status === 1 ? 0 : 1;
+      }
+    },
     deleteTodo(state, action) {
       const { id } = action.payload;
       const existingTodo = state.find((todo) => todo.id === id);
@@ -31,6 +38,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addNewTodo, updateTodo, deleteTodo } = todoSlice.actions;
+export const { addNewTodo, updateTodo, deleteTodo, toggleStatus } = todoSlice.actions;
 
 export default todoSlice.reducer;

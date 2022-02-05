@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo } from "../reducers/todoSlice";
+import { deleteTodo, toggleStatus } from "../reducers/todoSlice";
 import TableTodo from "./Table";
 
 export default function TodoList() {
@@ -23,6 +23,10 @@ export default function TodoList() {
     dispatch(deleteTodo({ id }));
   };
 
+  const handleToggle = (id) => {
+    dispatch(toggleStatus({ id }));
+  }
+
   return (
     <div className="">
       <div className="">
@@ -43,12 +47,14 @@ export default function TodoList() {
         <TableTodo
           todos={incompleteTodos}
           handleDeleteTodo={handleDeleteTodo}
+          toggleStatus={handleToggle}
         />
 
         <h2> Completed Todos </h2>
         <TableTodo
           todos={completedTodos}
           handleDeleteTodo={handleDeleteTodo}
+          toggleStatus={handleToggle}
         />
       </div>
     </div>

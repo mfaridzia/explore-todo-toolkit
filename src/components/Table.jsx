@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Table({todos, handleDeleteTodo}) {
+export default function Table({todos, handleDeleteTodo, toggleStatus}) {
   return (
     <table className="">
       <thead>
@@ -19,12 +19,19 @@ export default function Table({todos, handleDeleteTodo}) {
             <td>{todo.title}</td>
             <td>{todo.description}</td>
             <td>
-              <button onClick={() => handleDeleteTodo(todo.id)}>
+              <button
+                disabled={todo.status === 1}
+                title={todo.status === 1 ? 'cannot be deleted!' : null}
+                onClick={() => handleDeleteTodo(todo.id)}
+              >
                 Delete
               </button>
               <Link to={`/edit-todo/${todo.id}`}>
                 <button>Edit</button>
               </Link>
+              <button onClick={() => toggleStatus(todo.id)}>
+                Toggle Status
+              </button>
             </td>
           </tr>
         ))}

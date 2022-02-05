@@ -2,13 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo } from "../reducers/todoSlice";
+import TableTodo from "./Table";
 
 export default function TodoList() {
   const dispatch = useDispatch();
 
   const todos = useSelector((state) => state.todolists);
+  
+  // sort by desc
+  const completedTodos = todos.filter(todo => {
+    return todo.status === 1
+  }).sort((a, b) => Date.parse(b) - Date.parse(a));
 
-   const handleDeleteTodo = (id) => {
+  // sort by asc
+  const incompleteTodos = todos.filter(todo => {
+    return todo.status === 0
+  }).sort((a, b) => Date.parse(a) - Date.parse(b));
+
+  const handleDeleteTodo = (id) => {
     dispatch(deleteTodo({ id }));
   };
 
@@ -22,37 +33,23 @@ export default function TodoList() {
           <button className="">Load TodoList</button>
         </div>
         <div className="">
-          <button className="">Add Todo</button>
+          <Link to="/add-todo">
+            <button>Add Todo</button>
+          </Link>
         </div>
       </div>
       <div className="">
-        <table className="">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {todos.map(todo => (
-              <tr key={todo.id}>
-                <td>{todo.id}</td>
-                <td>{todo.title}</td>
-                <td>{todo.description}</td>
-                <td>
-                  <button onClick={() => handleDeleteTodo(todo.id)}>
-                    Delete
-                  </button>
-                  <Link to={`/edit-todo/${todo.id}`}>
-                    <button>Edit</button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h2> Completed Todos </h2>
+        <TableTodo
+          todos={completedTodos}
+          handleDeleteTodo={handleDeleteTodo}
+        />
+
+        <h2> Incomplete Todos </h2>
+        <TableTodo
+          todos={incompleteTodos}
+          handleDeleteTodo={handleDeleteTodo}
+        />
       </div>
     </div>
   );

@@ -20,7 +20,8 @@ export default function AddTodo() {
           id: todosAmount + 1,
           title,
           description,
-          status: 0
+          status: 0,
+          createdAt: new Date().toISOString()
         })
       );
 
@@ -40,7 +41,7 @@ export default function AddTodo() {
       </div>
       <div className="">
         <div className="">
-          <label for="titleInput"> Title </label>
+          <label htmlFor="titleInput"> Title </label>
           <input
             className=""
             name="title"
@@ -51,7 +52,7 @@ export default function AddTodo() {
             value={title}
           />
 
-          <label for="descriptionInput"> Description </label>
+          <label htmlFor="descriptionInput"> Description </label>
           <input
             className=""
             name="description"

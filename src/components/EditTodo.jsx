@@ -5,7 +5,7 @@ import { updateTodo } from "../reducers/todoSlice";
 
 export default function EditTodo() {
   const { pathname } = useLocation();
-  const todoId = pathname.replace("/edit-todo/", "");
+  const todoId = Number(pathname.replace("/edit-todo/", ""));
 
   const todo = useSelector((state) =>
     state.todolists.find((todo) => todo.id === todoId)
@@ -26,7 +26,8 @@ export default function EditTodo() {
           id: todoId,
           title,
           description,
-          status
+          status: Number(status),
+          createdAt: new Date().toISOString()
         })
       );
 
@@ -50,28 +51,25 @@ export default function EditTodo() {
           <label htmlFor="titleInput">Title</label>
           <input
             className=""
-            name="title"
             type="text"
             id="titleInput"
-            onChange={(e) => setTitle(e.target.title)}
+            onChange={(e) => setTitle(e.target.value)}
             value={title}
           />
           <label htmlFor="descriptionInput">Description</label>
           <input
             className=""
-            name="description"
             type="text"
             id="descriptionInput"
-            onChange={(e) => setDescription(e.target.description)}
+            onChange={(e) => setDescription(e.target.value)}
             value={description}
           />
           <label htmlFor="statusInput">Status</label>
           <input
             className=""
-            name="status"
             type="number"
             id="statusInput"
-            onChange={(e) => setStatus(e.target.status)}
+            onChange={(e) => setStatus(e.target.value)}
             value={status}
           />
           {error && error}

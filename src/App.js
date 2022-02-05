@@ -1,20 +1,22 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import TodoList  from "./components/TodoList";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
+import EditTodo from "./components/EditTodo";
 
 export default function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/">
-            <TodoList />
-          </Route>
           <Route path="/add-todo">
-            <h1>Add Todo</h1>
+            <AddTodo />
           </Route>
           <Route path="/edit-todo">
-            <h1>Edit Todo</h1>
+            <EditTodo />
+          </Route>
+          <Route path="/">
+            <TodoList />
           </Route>
         </Switch>
       </div>

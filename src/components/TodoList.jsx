@@ -12,12 +12,12 @@ export default function TodoList() {
   // sort by desc
   const completedTodos = todos.filter(todo => {
     return todo.status === 1
-  }).sort((a, b) => Date.parse(b) - Date.parse(a));
+  }).sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
 
   // sort by asc
   const incompleteTodos = todos.filter(todo => {
     return todo.status === 0
-  }).sort((a, b) => Date.parse(a) - Date.parse(b));
+  }).sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt));
 
   const handleDeleteTodo = (id) => {
     dispatch(deleteTodo({ id }));
@@ -39,15 +39,15 @@ export default function TodoList() {
         </div>
       </div>
       <div className="">
-        <h2> Completed Todos </h2>
-        <TableTodo
-          todos={completedTodos}
-          handleDeleteTodo={handleDeleteTodo}
-        />
-
         <h2> Incomplete Todos </h2>
         <TableTodo
           todos={incompleteTodos}
+          handleDeleteTodo={handleDeleteTodo}
+        />
+
+        <h2> Completed Todos </h2>
+        <TableTodo
+          todos={completedTodos}
           handleDeleteTodo={handleDeleteTodo}
         />
       </div>

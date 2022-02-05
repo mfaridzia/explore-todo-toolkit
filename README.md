@@ -2,6 +2,10 @@
 
 Simple todolist using React & Redux Toolkit
 
+Demo
+
+https://exolore-todo-toolkit.netlify.app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting Started

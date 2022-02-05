@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo } from "../reducers/todoSlice";
 
 export default function TodoList() {
+  const dispatch = useDispatch();
+
   const todos = useSelector((state) => state.todolists);
+
+   const handleDeleteTodo = (id) => {
+    dispatch(deleteTodo({ id }));
+  };
 
   return (
     <div className="">
@@ -19,7 +26,7 @@ export default function TodoList() {
         </div>
       </div>
       <div className="">
-        <table class="">
+        <table className="">
           <thead>
             <tr>
               <th>ID</th>
@@ -35,7 +42,9 @@ export default function TodoList() {
                 <td>{todo.title}</td>
                 <td>{todo.description}</td>
                 <td>
-                  <button>Delete</button>
+                  <button onClick={() => handleDeleteTodo(todo.id)}>
+                    Delete
+                  </button>
                   <Link to={`/edit-todo/${todo.id}`}>
                     <button>Edit</button>
                   </Link>

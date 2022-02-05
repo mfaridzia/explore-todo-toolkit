@@ -20,9 +20,16 @@ const todoSlice = createSlice({
         existingTodo.status = status;
       }
     },
+    deleteTodo(state, action) {
+      const { id } = action.payload;
+      const existingTodo = state.entities.find((todo) => todo.id === id);
+      if (existingTodo) {
+        state.entities = state.entities.filter((todo) => todo.id !== id);
+      }
+    },
   },
 });
 
-export const { addNewTodo, updateTodo } = todoSlice.actions;
+export const { addNewTodo, updateTodo, deleteTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;

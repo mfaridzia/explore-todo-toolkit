@@ -28,37 +28,41 @@ export default function TodoList() {
   }
 
   return (
-    <div className="">
-      <div className="">
-        <h1>Todo List App</h1>
-      </div>
-      <div className="">
-        <div className="">
-          <Link to="/add-todo">
-            <button>Add Todo</button>
-          </Link>
-        </div>
-      </div>
-      <div className="">
-        { loading ? (
-          <h2>Loading...</h2>
-        ) : (
-          <>
-            <h2> Incomplete Todos </h2>
-            <TableTodo
-              todos={incompleteTodos}
-              handleDeleteTodo={handleDeleteTodo}
-              toggleStatus={handleToggle}
-            />
+    <div className="container">
+      <div className="row mx-auto">
+        <div className="col-md-10 mx-auto">
+          <div className="text-center">
+            <h1>Todo List App</h1>
+          </div>
+          <div className="text-center">
+            <div className="mt-3">
+              <Link to="/add-todo">
+                <button className="btn btn-primary">Add Todo</button>
+              </Link>
+            </div>
+          </div>
+          <div className="text-center">
+            { loading ? (
+              <h2 className="mt-5">Loading...</h2>
+            ) : (
+              <>
+                <h4 className="mt-2"> Incomplete Todos </h4>
+                <TableTodo
+                  todos={incompleteTodos}
+                  handleDeleteTodo={handleDeleteTodo}
+                  toggleStatus={handleToggle}
+                />
 
-            <h2> Completed Todos </h2>
-            <TableTodo
-              todos={completedTodos}
-              handleDeleteTodo={handleDeleteTodo}
-              toggleStatus={handleToggle}
-            />
-          </>
-        )}
+                <h4 className="mt-4"> Completed Todos </h4>
+                <TableTodo
+                  todos={completedTodos}
+                  handleDeleteTodo={handleDeleteTodo}
+                  toggleStatus={handleToggle}
+                />
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

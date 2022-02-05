@@ -42,12 +42,12 @@ export default function EditTodo() {
   };
 
   return (
-    <div className="">
-      <div className="">
+    <div className="container">
+      <div className="text-center mt-3">
         <h1>Edit Todo</h1>
       </div>
-      <div className="">
-        <div className="">
+      <div className="col-md-6 mx-auto mt-4">
+        <div className="d-flex flex-column">
           <FormInput
             labelId="titleInput"
             placeholder="Enter Title..."
@@ -73,7 +73,7 @@ export default function EditTodo() {
             onChange={(e) => setStatus(e.target.value)}
           />
           {error && error}
-          <button onClick={handleUpdateTodo} className="">
+          <button onClick={handleUpdateTodo} className="btn btn-primary">
             Save Todo
           </button>
         </div>

@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Table({todos, handleDeleteTodo, toggleStatus}) {
   return (
-    <table className="">
+    <table className="mx-auto table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Title</th>
           <th>Description</th>
           <th>Actions</th>
@@ -15,21 +14,27 @@ export default function Table({todos, handleDeleteTodo, toggleStatus}) {
       <tbody>
         {todos.map(todo => (
           <tr key={todo.id}>
-            <td>{todo.id}</td>
             <td>{todo.title}</td>
             <td>{todo.description}</td>
             <td>
               <button
+                className="btn btn-danger"
                 disabled={todo.status === 1}
-                title={todo.status === 1 ? 'cannot be deleted!' : null}
                 onClick={() => handleDeleteTodo(todo.id)}
               >
                 Delete
               </button>
+
               <Link to={`/edit-todo/${todo.id}`}>
-                <button>Edit</button>
+                <button className="btn btn-info text-white">
+                  Edit
+                </button>
               </Link>
-              <button onClick={() => toggleStatus(todo.id)}>
+
+              <button
+                className="btn btn-secondary"
+                onClick={() => toggleStatus(todo.id)}
+              >
                 Toggle Status
               </button>
             </td>

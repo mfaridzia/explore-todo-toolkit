@@ -5,7 +5,7 @@ import App from "./App";
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import store from "./store";
-import { fetchTodoLists } from "./reducers/todoSlice";
+import { fetchTodoLists } from "./slice/todoSlice";
 import reportWebVitals from './reportWebVitals';
 
 // load as soon as our app load

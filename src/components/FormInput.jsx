@@ -12,7 +12,7 @@ export default function FormInput({
     <>
       <label htmlFor={labelId}> {text} </label>
       <input
-        className=""
+        className="form-control mb-3"
         type={type}
         placeholder={placeholder}
         id={labelId}

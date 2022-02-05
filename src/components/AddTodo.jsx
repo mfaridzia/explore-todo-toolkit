@@ -36,12 +36,12 @@ export default function AddTodo() {
   };
 
   return (
-    <div className="">
-      <div className="">
+    <div className="container">
+      <div className="text-center mt-3">
         <h1>Add Todo</h1>
       </div>
-      <div className="">
-        <div className="">
+      <div className="col-md-6 mx-auto mt-4">
+        <div className="d-flex flex-column">
           <FormInput
             labelId="titleInput"
             placeholder="Enter Title..."
@@ -58,8 +58,8 @@ export default function AddTodo() {
             onChange={(e) => setDescription(e.target.value)}
           />
           {error && error}
-          <button onClick={handleAddTodo} className="">
-            Add Todo
+          <button onClick={handleAddTodo} className="btn btn-primary">
+            Save Todo
           </button>
         </div>
       </div>

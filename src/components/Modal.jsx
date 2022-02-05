@@ -24,9 +24,9 @@ export default function ModalTodo({ show, handleClose, selectedTodo }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Description: {selectedTodo.description} </p>
-          <p>Status: {selectedTodo.status} </p>
-          <p>CreatedAt: {selectedTodo.createdAt} </p>
+          <p>Description: {selectedTodo.description}</p>
+          <p>Status: {selectedTodo.status}</p>
+          <p>CreatedAt: {selectedTodo.createdAt}</p>
 
           <button
             className="btn btn-danger"

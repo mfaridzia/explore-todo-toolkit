@@ -6,14 +6,14 @@ import FormInput from "./FormInput";
 
 export default function EditTodo() {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
   const todoId = Number(pathname.replace("/edit-todo/", ""));
 
   const todo = useSelector((state) =>
     state.todolists.todoItems.find((todo) => todo.id === todoId)
   );
-
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description);

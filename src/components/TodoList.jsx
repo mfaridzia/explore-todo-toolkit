@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function TodoList() {
+  const todos = useSelector((state) => state.todolists);
+
   return (
     <div className="">
       <div className="">
@@ -25,15 +28,17 @@ export default function TodoList() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>TodList1</td>
-              <td>Lorem ipsum dolor sit amet</td>
-              <td>
-                <button>Delete</button>
-                <button>Edit</button>
-              </td>
-            </tr>
+            {todos.map(todo => (
+              <tr key={todo.id}>
+                <td>{todo.id}</td>
+                <td>{todo.title}</td>
+                <td>{todo.description}</td>
+                <td>
+                  <button>Delete</button>
+                  <button>Edit</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

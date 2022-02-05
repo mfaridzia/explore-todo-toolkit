@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addNewTodo } from "../reducers/todoSlice";
+import { addNewTodo } from "../slice/todoSlice";
 
 export default function AddTodo() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function AddTodo() {
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
-  const todosAmount = useSelector((state) => state.todolists.length);
+  const todosAmount = useSelector((state) => state.todolists.todoItems.length);
 
   const handleAddTodo = () => {
     if (title && description) {

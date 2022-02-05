@@ -4,7 +4,11 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import './index.css';
 import store from "./store";
+import { fetchTodoLists } from "./reducers/todoSlice";
 import reportWebVitals from './reportWebVitals';
+
+// load as soon as our app load
+store.dispatch(fetchTodoLists());
 
 ReactDOM.render(
   <Provider store={store}>

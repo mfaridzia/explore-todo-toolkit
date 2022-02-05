@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { updateTodo } from "../reducers/todoSlice";
+import { updateTodo } from "../slice/todoSlice";
 
 export default function EditTodo() {
   const { pathname } = useLocation();
   const todoId = Number(pathname.replace("/edit-todo/", ""));
 
   const todo = useSelector((state) =>
-    state.todolists.find((todo) => todo.id === todoId)
+    state.todolists.todoItems.find((todo) => todo.id === todoId)
   );
 
   const dispatch = useDispatch();
@@ -26,8 +26,7 @@ export default function EditTodo() {
           id: todoId,
           title,
           description,
-          status: Number(status),
-          createdAt: new Date().toISOString()
+          status: Number(status)
         })
       );
 

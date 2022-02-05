@@ -43,6 +43,7 @@ export default function AddTodo() {
           <label for="titleInput"> Title </label>
           <input
             className=""
+            name="title"
             type="text"
             placeholder="Enter Title..."
             id="titleInput"
@@ -53,6 +54,7 @@ export default function AddTodo() {
           <label for="descriptionInput"> Description </label>
           <input
             className=""
+            name="description"
             type="text"
             placeholder="Description..."
             id="descriptionInput"
@@ -61,7 +63,7 @@ export default function AddTodo() {
           />
 
           {error && error}
-          
+
           <button onClick={handleAddTodo} className="">
             Add Todo
           </button>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function TodoList() {
@@ -35,7 +36,9 @@ export default function TodoList() {
                 <td>{todo.description}</td>
                 <td>
                   <button>Delete</button>
-                  <button>Edit</button>
+                  <Link to={`/edit-todo/${todo.id}`}>
+                    <button>Edit</button>
+                  </Link>
                 </td>
               </tr>
             ))}

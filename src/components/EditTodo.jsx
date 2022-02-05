@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { updateTodo } from "../slice/todoSlice";
+import FormInput from "./FormInput";
 
 export default function EditTodo() {
   const { pathname } = useLocation();
@@ -47,29 +48,29 @@ export default function EditTodo() {
       </div>
       <div className="">
         <div className="">
-          <label htmlFor="titleInput">Title</label>
-          <input
-            className=""
-            type="text"
-            id="titleInput"
-            onChange={(e) => setTitle(e.target.value)}
+          <FormInput
+            labelId="titleInput"
+            placeholder="Enter Title..."
+            text="Title"
             value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
-          <label htmlFor="descriptionInput">Description</label>
-          <input
-            className=""
-            type="text"
-            id="descriptionInput"
-            onChange={(e) => setDescription(e.target.value)}
+
+          <FormInput
+            labelId="descriptionInput"
+            placeholder="Description..."
+            text="Description"
             value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
-          <label htmlFor="statusInput">Status</label>
-          <input
-            className=""
+
+          <FormInput
+            labelId="statusInput"
             type="number"
-            id="statusInput"
-            onChange={(e) => setStatus(e.target.value)}
+            placeholder="Status"
+            text="Status"
             value={status}
+            onChange={(e) => setStatus(e.target.value)}
           />
           {error && error}
           <button onClick={handleUpdateTodo} className="">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addNewTodo } from "../slice/todoSlice";
+import FormInput from "./FormInput";
 
 export default function AddTodo() {
   const dispatch = useDispatch();
@@ -41,30 +42,22 @@ export default function AddTodo() {
       </div>
       <div className="">
         <div className="">
-          <label htmlFor="titleInput"> Title </label>
-          <input
-            className=""
-            name="title"
-            type="text"
+          <FormInput
+            labelId="titleInput"
             placeholder="Enter Title..."
-            id="titleInput"
-            onChange={(event) => setTitle(event.target.value)}
+            text="Title"
             value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
-          <label htmlFor="descriptionInput"> Description </label>
-          <input
-            className=""
-            name="description"
-            type="text"
+          <FormInput
+            labelId="descriptionInput"
             placeholder="Description..."
-            id="descriptionInput"
-            onChange={(event) => setDescription(event.target.value)}
+            text="Description"
             value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
-
           {error && error}
-
           <button onClick={handleAddTodo} className="">
             Add Todo
           </button>

@@ -30,12 +30,9 @@ export default function TodoList() {
   return (
     <div className="">
       <div className="">
-        <h1>Todo List APP</h1>
+        <h1>Todo List App</h1>
       </div>
       <div className="">
-        <div className="">
-          <button className="">Load TodoList</button>
-        </div>
         <div className="">
           <Link to="/add-todo">
             <button>Add Todo</button>
